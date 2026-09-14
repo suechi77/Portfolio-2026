@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Hi, welcome to my page</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,440;0,9..144,560;1,9..144,440;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+ 
+<div class="progress" id="progress"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+ 
+<header>
+  <nav class="wrap">
+    <div class="mark"><span class="bun">🐰</span> Portfolio</div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#focus">Focus</a>
+      <a href="#interests">Interests</a>
+      <a href="#connect">Connect</a>
+    </div>
+  </nav>
+</header>
+ 
+<main>
+ 
+  <section class="hero">
+    <div class="wrap hero">
+ 
+      <div class="hero-text">
+        <span class="kicker">Fresh graduate · International Business × Web Communication</span>
+        <h1>Hi, welcome to <em>my page</em></h1>
+        <p class="lede">I'm passionate about improving user experiences through better UI/UX design, technology, and the marketing trends shaping how businesses connect with people.</p>
+        <div class="degrees">
+          <span class="pill">International Business</span>
+          <span class="pill">Web Communication</span>
+        </div>
+        <div class="scroll-cue"><span class="line"></span> scroll to explore</div>
+      </div>
+ 
+      <div class="hero-visual">
+        <div class="blob"></div>
+        <div class="bun-big">🐰</div>
+      </div>
+ 
+    </div>
+  </section>
+ 
+  <section class="about" id="about">
+    <div class="wrap">
+      <span class="section-label">About</span>
+      <p>I am a fresh graduate with a double major in International Business and Web Communication. On the side, I keep myself up to date with trends and have developed a genuine interest in reading about psychology — specifically, how certain words and colours can make people feel more connected to a brand.</p>
+    </div>
+  </section>
+ 
+  <section id="focus">
+    <div class="wrap">
+      <span class="section-label">Where I focus</span>
+      <h2 style="font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 440; max-width: 20ch;">Design, technology, and the psychology behind both.</h2>
+ 
+      <div class="focus-list">
+        <div class="focus-row">
+          <h3>UI/UX Design</h3>
+          <p>Crafting experiences that feel intuitive, human, and considered — from first impression to last click.</p>
+        </div>
+        <div class="focus-row">
+          <h3>Technology</h3>
+          <p>Staying close to the tools and platforms shaping how digital products get built and used.</p>
+        </div>
+        <div class="focus-row">
+          <h3>Marketing Trends</h3>
+          <p>Watching how brands earn attention, trust, and loyalty in an increasingly crowded market.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <section id="interests">
+    <div class="wrap interests">
+      <span class="section-label">Beyond work</span>
+      <h2 style="font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 440; max-width: 24ch;">A few things that keep me occupied.</h2>
+ 
+      <div class="chip-row" id="chipRow">
+        <button class="chip" data-panel="branding">Branding psychology</button>
+        <button class="chip" data-panel="japanese">Japanese</button>
+        <button class="chip" data-panel="gym">Gym</button>
+        <button class="chip" data-panel="climbing">Climbing</button>
+      </div>
+ 
+      <div class="chip-panel" id="chipPanel">
+        <div class="chip-panel-inner" id="chipPanelInner"></div>
+      </div>
+    </div>
+  </section>
+ 
+  <section class="closing" id="connect">
+    <div class="wrap">
+      <span class="section-label">Closing thought</span>
+      <h2>We only have one life, yet there are so many things I want to do and <em>achieve</em>. I hope to share my passion and achievements with you.</h2>
+ 
+      <div class="connect-links">
+        <a href="mailto:hello@example.com">Email</a>
+        <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="#" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+  </section>
+ 
+</main>
+ 
+<footer>
+  Made with care · replace the placeholder links above with your own
+</footer>
+ 
+<script>
+  // scroll progress bar
+  const progress = document.getElementById('progress');
+  function updateProgress(){
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    progress.style.width = (scrolled || 0) + '%';
+  }
+  document.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+ 
+  // custom cursor accent
+  const dot = document.getElementById('cursorDot');
+  let cursorReady = false;
+  window.addEventListener('mousemove', (e) => {
+    dot.style.left = e.clientX + 'px';
+    dot.style.top = e.clientY + 'px';
+    if(!cursorReady){ dot.classList.add('active'); cursorReady = true; }
+  });
+  document.querySelectorAll('a, button, .focus-row').forEach(el => {
+    el.addEventListener('mouseenter', () => dot.classList.add('grow'));
+    el.addEventListener('mouseleave', () => dot.classList.remove('grow'));
+  });
+ 
+  // interest chips
+  const details = {
+    branding: {
+      title: 'Branding psychology',
+      text: "How certain words and colours quietly shape the way people feel connected to a brand — a small obsession I read about in my spare time."
+    },
+    japanese: {
+      title: 'Japanese',
+      text: "Learning steadily, one conversation at a time."
+    },
+    gym: {
+      title: 'Gym',
+      text: "Building strength and consistency, one rep at a time."
+    },
+    climbing: {
+      title: 'Climbing',
+      text: "Problem-solving with your whole body, one hold at a time."
+    }
+  };
+ 
+  const chips = document.querySelectorAll('.chip');
+  const panel = document.getElementById('chipPanel');
+  const panelInner = document.getElementById('chipPanelInner');
+  let activeChip = null;
+ 
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const key = chip.dataset.panel;
+ 
+      if(activeChip === chip){
+        panel.classList.remove('open');
+        chip.classList.remove('active');
+        activeChip = null;
+        return;
+      }
+ 
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      activeChip = chip;
+ 
+      const d = details[key];
+      panelInner.innerHTML = '<strong>' + d.title + '</strong>' + d.text;
+      panel.classList.add('open');
+    });
+  });
+</script>
+ 
+</body>
+</html>
