@@ -344,6 +344,8 @@ nav.wrap{
   border-bottom: 1px solid var(--line);
   align-items: baseline;
   transition: padding-left .35s ease;
+  text-decoration: none;
+  color: inherit;
 }
 .focus-row:hover{
   padding-left: 10px;
