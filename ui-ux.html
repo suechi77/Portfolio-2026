@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UI/UX Design — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,440;0,9..144,560;1,9..144,440;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="ui-ux.css">
+</head>
+<body>
+ 
+<header>
+  <nav class="wrap">
+    <a class="back-link" href="index.html"><span class="arrow">←</span> Back to portfolio</a>
+    <div class="mark">UI/UX Design</div>
+  </nav>
+</header>
+ 
+<main>
+ 
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="section-label">Focus area</span>
+      <h1>Crafting experiences that feel intuitive, human, and considered.</h1>
+      <p class="lede">A look into the process behind one of my UI/UX projects — from early wireframes to the final live product.</p>
+ 
+      <div class="hero-actions">
+        <button class="btn" id="openBrief" type="button">View design brief</button>
+        <a class="btn btn-primary" href="https://yourlivesite.com" target="_blank" rel="noopener">Visit live site <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+ 
+  <section class="intro">
+    <div class="wrap">
+      <span class="section-label">Project introduction</span>
+      <p>Replace this paragraph with an introduction to your project — what problem it solved, who it was for, and what your role was in bringing it to life. Keep it to a few sentences that set the scene before the visuals below do the rest of the talking.</p>
+    </div>
+  </section>
+ 
+  <section class="visual-section">
+    <div class="wrap">
+      <span class="section-label">Wireframes</span>
+      <h2>Mapping the structure before the polish.</h2>
+      <div class="visual-frame">
+        <img src="images/wireframes.jpg" alt="Wireframes for the project">
+      </div>
+      <p class="visual-caption">Replace this image with your own wireframes, and update this caption with a short note on what stage of the process it shows.</p>
+    </div>
+  </section>
+ 
+  <section class="visual-section">
+    <div class="wrap">
+      <span class="section-label">Moodboard</span>
+      <h2>Setting the tone — colour, type, and texture.</h2>
+      <div class="visual-frame">
+        <img src="images/moodboard.jpg" alt="Moodboard for the project">
+      </div>
+      <p class="visual-caption">Replace this image with your own moodboard, and update this caption with the direction it was guiding the design toward.</p>
+    </div>
+  </section>
+ 
+  <section class="closing">
+    <div class="wrap">
+      <span class="section-label">Interested in working together?</span>
+      <h2>Let's talk about how thoughtful design can shape your next product.</h2>
+      <a class="closing-link" href="index.html#connect">Get in touch <span>→</span></a>
+    </div>
+  </section>
+ 
+</main>
+ 
+<footer>
+  Made with care · part of my portfolio
+</footer>
+ 
+<!-- Design brief popup -->
+<div class="modal-overlay" id="briefModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3>Web Design Brief</h3>
+      <button class="modal-close" id="closeBrief" type="button" aria-label="Close">✕</button>
+    </div>
+    <div class="modal-toolbar">
+      <button class="zoom-btn" id="zoomOut" type="button" aria-label="Zoom out">−</button>
+      <span class="zoom-level" id="zoomLevel">100%</span>
+      <button class="zoom-btn" id="zoomIn" type="button" aria-label="Zoom in">+</button>
+      <button class="zoom-reset" id="zoomReset" type="button">Reset</button>
+    </div>
+    <div class="modal-body" id="modalBody">
+      <iframe id="briefFrame" src="documents/web-design-brief.pdf" title="Web Design Brief"></iframe>
+    </div>
+  </div>
+</div>
+ 
+<script>
+  const openBrief = document.getElementById('openBrief');
+  const closeBrief = document.getElementById('closeBrief');
+  const briefModal = document.getElementById('briefModal');
+  const briefFrame = document.getElementById('briefFrame');
+  const zoomIn = document.getElementById('zoomIn');
+  const zoomOut = document.getElementById('zoomOut');
+  const zoomReset = document.getElementById('zoomReset');
+  const zoomLevelLabel = document.getElementById('zoomLevel');
+ 
+  let zoomLevel = 1;
+  const ZOOM_STEP = 0.1;
+  const ZOOM_MIN = 0.5;
+  const ZOOM_MAX = 2.5;
+ 
+  function applyZoom(){
+    briefFrame.style.transform = 'scale(' + zoomLevel + ')';
+    briefFrame.style.transformOrigin = 'top left';
+    briefFrame.style.width = (100 / zoomLevel) + '%';
+    briefFrame.style.height = (70 / zoomLevel) + 'vh';
+    zoomLevelLabel.textContent = Math.round(zoomLevel * 100) + '%';
+  }
+ 
+  zoomIn.addEventListener('click', () => {
+    zoomLevel = Math.min(ZOOM_MAX, +(zoomLevel + ZOOM_STEP).toFixed(2));
+    applyZoom();
+  });
+  zoomOut.addEventListener('click', () => {
+    zoomLevel = Math.max(ZOOM_MIN, +(zoomLevel - ZOOM_STEP).toFixed(2));
+    applyZoom();
+  });
+  zoomReset.addEventListener('click', () => {
+    zoomLevel = 1;
+    applyZoom();
+  });
+ 
+  function openModal(){
+    briefModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    zoomLevel = 1;
+    applyZoom();
+  }
+  function closeModal(){
+    briefModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+ 
+  openBrief.addEventListener('click', openModal);
+  closeBrief.addEventListener('click', closeModal);
+ 
+  briefModal.addEventListener('click', (e) => {
+    if(e.target === briefModal) closeModal();
+  });
+ 
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape' && briefModal.classList.contains('open')) closeModal();
+  });
+</script>
+ 
+</body>
+</html>
