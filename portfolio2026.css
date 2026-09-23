@@ -376,12 +376,22 @@ nav.wrap{
   border: 1px solid var(--line);
   background: var(--paper);
   color: var(--ink);
-  padding: 11px 20px;
+  padding: 12px 28px 12px 12px;
   border-radius: 999px;
   font-family: 'Work Sans', sans-serif;
-  font-size: 0.92rem;
+  font-size: 1.1rem;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
   transition: background .25s ease, border-color .25s ease, color .25s ease, transform .15s ease;
+}
+.chip-thumb{
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
 }
 .chip:hover{
   border-color: var(--sage-deep);
@@ -390,6 +400,9 @@ nav.wrap{
   background: var(--sage);
   border-color: var(--sage);
   color: var(--paper);
+}
+.chip.active .chip-thumb{
+  border: 2px solid var(--paper);
 }
 .chip:active{ transform: scale(0.97); }
  
