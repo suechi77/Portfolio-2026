@@ -174,7 +174,7 @@ nav.wrap{
 }
  
 .kicker{
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: var(--ink-soft);
   margin-bottom: 14px;
   display: block;
@@ -195,7 +195,7 @@ nav.wrap{
   margin-top: 22px;
   max-width: 46ch;
   color: var(--ink-soft);
-  font-size: 1.05rem;
+  font-size: 1.15rem;
 }
  
 .degrees{
@@ -312,12 +312,12 @@ nav.wrap{
   font-family: 'Fraunces', serif;
   font-style: italic;
   color: var(--sage-deep);
-  font-size: 1rem;
+  font-size: 2rem;
   margin-bottom: 18px;
   display: block;
 }
 .about p{
-  font-size: 1.12rem;
+  font-size: 2rem;
   color: var(--ink);
 }
 .about p::first-letter{
@@ -376,19 +376,19 @@ nav.wrap{
   border: 1px solid var(--line);
   background: var(--paper);
   color: var(--ink);
-  padding: 12px 28px 12px 12px;
+  padding: 10px 24px 10px 10px;
   border-radius: 999px;
   font-family: 'Work Sans', sans-serif;
   font-size: 1.1rem;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   transition: background .25s ease, border-color .25s ease, color .25s ease, transform .15s ease;
 }
 .chip-thumb{
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   object-fit: cover;
   display: block;
